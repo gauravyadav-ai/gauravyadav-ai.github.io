@@ -1,12 +1,12 @@
 ---
 
-permalink: /
+permalink: "/"
 title: "Gaurav Yadav"
 author_profile: true
 redirect_from:
 
-* /about/
-* /about.html
+* "/about/"
+* "/about.html"
 
 ---
 
@@ -26,4 +26,3 @@ Data Science student focused on **Deep Learning and Computer Vision**.
 This site showcases my projects, experiments and research work.
 
 Visit the **Portfolio** section to see my work and the **CV** section for my resume.
-
