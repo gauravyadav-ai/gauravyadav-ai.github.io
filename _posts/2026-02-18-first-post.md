@@ -3,7 +3,7 @@
 title: "When High Accuracy Models Fail in the Real World"
 layout: single
 author_profile: true
---------------------
+---
 
 During training, my segmentation model achieved strong mIoU scores.
 But when I tested it on slightly different images — it completely broke.
