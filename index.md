@@ -1,10 +1,10 @@
 ---
 
 layout: single
-title: "Gaurav Yadav"
+title: Gaurav Yadav
 author_profile: true
 permalink: /
-------------
+---
 
 ## Hi, I'm Gaurav Yadav
 
