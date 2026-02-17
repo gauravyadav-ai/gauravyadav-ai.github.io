@@ -1,14 +1,9 @@
 ---
 
-permalink: "/"
+permalink: /
 title: "Gaurav Yadav"
 author_profile: true
-redirect_from:
-
-* "/about/"
-* "/about.html"
-
----
+--------------------
 
 # Gaurav Yadav
 
