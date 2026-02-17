@@ -1,45 +1,90 @@
 ---
-title: "Why Segmentation Models Fail in the Real World"
-date: 2026-02-18
+
+title: "When High Accuracy Models Fail in the Real World"
 layout: single
 author_profile: true
-tags: [deep learning, computer vision, segmentation, research]
+--------------------
+
+During training, my segmentation model achieved strong mIoU scores.
+But when I tested it on slightly different images — it completely broke.
+
+Not small errors. Completely unusable masks.
+
+This post explains what actually went wrong.
+
 ---
 
-Deep learning papers report 90%+ IoU.
+## The Illusion of Metrics
 
-Real world pipelines don’t.
+Most computer vision models are optimized for average performance across pixels.
 
-After training multiple segmentation architectures (UNet, DeepLab variants), I noticed something surprising:
+But real users don’t care about average pixels.
 
-The model was not failing randomly —  
-it was failing *systematically*.
+They care about:
 
-## The 3 Hidden Failure Modes
+* boundaries
+* thin structures
+* rare objects
+* partially occluded objects
 
-### 1. Boundary hallucination
-Models don't understand edges — they interpolate them.
+My model scored well because most pixels belong to background.
 
-When object boundaries are thin, the network predicts the *average semantic region* instead of geometry.
+So the metric improved even while the model became worse for humans.
 
-Result → fat masks.
+---
 
-### 2. Texture bias over shape bias
-If background texture matches object texture, prediction collapses.
+## The Failure Patterns I Observed
 
-The model recognizes **appearance**, not **structure**.
+After analyzing predictions across datasets, failures grouped into consistent categories:
 
-### 3. Scale collapse
-Objects smaller than the receptive field disappear completely.
-The network literally cannot represent them.
+**1) Boundary collapse**
+Edges were systematically over-smoothed.
 
-## The Real Insight
+**2) Small object blindness**
+Objects below a certain pixel size were ignored.
 
-Segmentation models are not perception systems.
+**3) Occlusion confusion**
+Partially hidden objects disappeared entirely.
 
-They are spatial classifiers operating on feature statistics.
+---
 
-This means improving dataset diversity often helps more than improving architecture.
+## Why This Happens
 
-## What I'm exploring next
-Memory-augmented networks that store rare spatial patterns instead of averaging them away.
+CNNs optimize global loss, not perceptual correctness.
+
+They learn dominant pixel distributions — not object understanding.
+
+So the model predicts:
+
+> statistically safe masks
+> instead of
+> semantically correct masks
+
+---
+
+## Fix Attempt: Global Memory
+
+I introduced a memory module that stores global context vectors.
+
+Pixels attend to this memory before prediction.
+
+Result: the model stopped fragmenting objects and improved structural consistency.
+
+---
+
+## Key Insight
+
+The biggest improvements didn’t come from deeper networks.
+
+They came from understanding **how the model fails**.
+
+Accuracy optimization improves numbers.
+Failure analysis improves reliability.
+
+---
+
+If we want deployable AI, we must stop asking
+“how accurate is the model?”
+
+and start asking
+“when will the model break?”
