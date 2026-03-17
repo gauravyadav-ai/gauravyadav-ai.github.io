@@ -12,7 +12,7 @@ Data Science student focused on Deep Learning and Computer Vision.
 
 ### Interests
 
-* Image Segmentation (UNet, DeepLab)
+* Image Segmentation (UNet, DeepLabV3+,OCRNet,SAM)
 * Failure analysis of vision models
 * Memory-augmented neural networks
 * Representation learning
