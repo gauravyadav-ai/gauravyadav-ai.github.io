@@ -8,7 +8,7 @@ permalink: /
 
 ## Hi, I'm Gaurav Yadav
 
-Data Science student focused on Deep Learning and Computer Vision.
+Data Science student focused on Deep Learning and Computer Vision.I like thinking and solving new problems that could provide value in real life.
 
 ### Interests
 
@@ -16,6 +16,8 @@ Data Science student focused on Deep Learning and Computer Vision.
 * Failure analysis of vision models
 * Memory-augmented neural networks
 * Representation learning
-* Natural language processing 
+* Natural language processing
+
+Currently i am working on a image segmentation architectures mainly semantic segmentation.
 
 Welcome to my personal website.
