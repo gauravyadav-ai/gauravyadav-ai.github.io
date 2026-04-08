@@ -1,8 +1,4 @@
-# Why SVD is the Most Beautiful Idea I've Encountered in ML
 
-⏱ 11 minute read
-
-**Published:** April 8, 2026
 
 Why SVD is the Most Beautiful Idea I've Encountered in ML · Feature Essay · 11 min read · Linear Algebra · Machine Learning · Curiosity
 
